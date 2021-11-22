@@ -13,6 +13,7 @@
   {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
+  {% section 'header' %}
 
   {% for link in linklists.main-menu.links %}
     {% assign child_list_handle = link.title | handleize %}
