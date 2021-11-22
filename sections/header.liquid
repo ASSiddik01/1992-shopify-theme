@@ -1,7 +1,16 @@
 <header id="site_header" class="site_header">
 <div class="container">
     <div class="row">
-        <div class="col col-auto">
+        <div class="col">
+            <i class="far fa-star"></i>Welcome to 1992 Online Shop! Let’s start to shopping NOW !!!    
+        </div>
+        <div class="col col-auto user_menu">
+            <a href="">Sign In</a>
+            <a href="">Login</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
             <div class="logo">
                 <a href="/" class="site-logo">
                     {% if section.settings.logo %}
@@ -11,6 +20,27 @@
                     {% endif%}
                 </a>
             </div>
+        </div>
+        <div class="col">
+            <div class="mainmenu">
+                <ul id="nav">
+                    {% for link in linklists.main-menu.links %}
+                        {% assign child_list_handle = link.title | handleize %}
+                        {% if linklists[child_list_handle].links != blank %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        <ul>{% for childlink in linklists[child_list_handle].links %}
+                            <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                        {% endfor %}</ul>
+                        {% else %}
+                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-2 text-right">
+            <span class="search_trigger"><i class="fas fa-search"></i></span>
+            <a href="/cart" class="cart_icon"><i class="fas fa-cart-plus"></i> <span class="cart_count">{{ cart.item_count }}</span> </a>
         </div>
     </div>
 </div>
