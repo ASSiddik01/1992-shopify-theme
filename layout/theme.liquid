@@ -8,8 +8,9 @@
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   {{ content_for_header }} <!-- Header hook for plugins -->
-  {{ 'application.css' | asset_url | stylesheet_tag }}
-  {{ 'application.js' | asset_url | script_tag }}
+  {% comment %} CSS File {% endcomment %}
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+  {{ 'style.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
 
@@ -40,5 +41,8 @@
   <main role="main">
     {{ content_for_layout }}
   </main>
+
+  {% comment %} Script File {% endcomment %}
+  {{ 'application.js' | asset_url | script_tag }}
 </body>
 </html>
